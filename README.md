@@ -14,9 +14,10 @@ We classified the nadir images into three classes: healthy, borderline, and dama
 
 ![](crab-class-examples.png)
 
-## Instructions for use
+## Scripts for model development
+Scripts used to develop our models can be found under the `scripts` directory.
 
-#### Hardware requirements
+## Instructions for use
 
 #### Software requirements
 See `requirements.txt` for required packages.
@@ -32,7 +33,7 @@ to install the necessary packages.
 
 ### Step 2: Dataset structure
 
-Organize your image dataset into the appropriate directory structure based on  classification task:
+Organize your image dataset into the appropriate directory structure based on classification task:
 
 * **Binary classification:**
 
@@ -56,3 +57,4 @@ dataset/
 Run `binary.py` for binary classification and `multiclass.py` for multiclass classification. Before running, set the `DATASET_PATH` variable in the file to the base path to your dataset. Additionally, modify the `ROWS` and `COLS` variables if needed.
 
 ## Acknowledgements
+This project was funded by the MIT Climate Project. We thank the Waquoit Bay National Estuarine Research Reserve, where our data was collected, and Dr. Megan Tyrrell for facilitating this study.

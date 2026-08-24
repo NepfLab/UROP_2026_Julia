@@ -23,7 +23,7 @@ all_imgs = sorted(all_imgs)
 for img in all_imgs:
     img_path = os.path.join(DATASET_PATH, img)
     slices_dir = create_slices(rows=ROWS, cols=COLS, image_path=img_path)
-    prediction = 'undamaged'
+    num_undamaged, num_damaged = 0, 0
     for slice in os.listdir(slices_dir):
         slice_path = os.path.join(slices_dir, slice)
         if not os.path.isfile(slice_path):
@@ -42,7 +42,9 @@ for img in all_imgs:
         slice_pred = results[0].names[best_class_idx]
 
         if slice_pred == 'damaged':
-            prediction = 'damaged'
+            num_damaged += 1
+        else:
+            num_undamaged += 1
 
-    print(f"Image: {img} | Predicted: {prediction}")
+    print(f"Image: {img} | Predicted: {num_undamaged} undamaged slices, {num_damaged} damaged slices")
     delete_slices()
