@@ -8,11 +8,13 @@ This repo contains a machine learning pipeline for detecting crab damage in dron
 This project automates the detection and classification of marsh damage caused by crabs using aerial drone imagery. By leveraging computer vision, it aims to reduce manual surveying time and help conservationists monitor wetland health more effectively. We present a modular, easily adaptable pipeline built on Ultralytics YOLO and optimized for edge deployment on UAVs, allowing for real-time identification of damaged areas in the field.
 
 ## Dataset and image classes
-This pipeline supports binary classification of images into undamaged and damaged classes, as well as multiclass classification into healthy, borderline, and damaged classes. Our model is primarily designed for the classification of nadir drone imagery. Our dataset consisted of nadir images shot at 15 meters.
+This pipeline supports binary classification of images into undamaged and damaged classes, as well as multiclass classification into healthy, borderline, and damaged classes. Our model is primarily designed for the classification of nadir drone imagery. Our dataset consisted of nadir images shot at 15 meters. We sliced the images into tiles in a 4x4 arrangement to reduce the compression undergone by images input to the model to preserve details.
 
 We classified the nadir images into three classes: healthy, borderline, and damaged. We defined the damaged class as images that contained any crab burrows; the borderline class as images that contained visible signs of marsh degradation but not crab burrows, such as sparse vegetation and regions of disconnected grass patches at the land-water interface, indicating either ongoing crab infestation or high risk of infestation; and the healthy class as images with no signs of crab damage or other degradation. See Fig. 1 for examples.
 
 ![](crab-class-examples.png)
+
+The original nadir images were manually annotated in LabelMe with polygons encircling the damaged and borderline areas. We created an automated pipeline to label nadir image tiles, generating class masks from the LabelMe annotations (with all non-encircled pixels labeled as healthy), and used them to assign each image tile to the most severe class that occupies over $5\%$ of the image.
 
 ## Scripts for model development
 Scripts used to develop our models can be found under the `scripts` directory.
