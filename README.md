@@ -14,7 +14,7 @@ We classified the nadir images into three classes: healthy, borderline, and dama
 
 ![](crab-class-examples.png)
 
-The original nadir images were manually annotated in LabelMe with polygons encircling the damaged and borderline areas. We created an automated pipeline to label nadir image tiles, generating class masks from the LabelMe annotations (with all non-encircled pixels labeled as healthy), and used them to assign each image tile to the most severe class that occupies over $5\%$ of the image.
+The original nadir images were manually annotated in LabelMe with polygons encircling the damaged and borderline areas. We created an automated pipeline to label nadir image tiles, generating class masks from the LabelMe annotations (with all non-encircled pixels labeled as healthy), and used them to assign each image tile to the most severe class that occupies over 5% of the image.
 
 ## Scripts for model development
 Scripts used to develop our models can be found under the `scripts` directory.
